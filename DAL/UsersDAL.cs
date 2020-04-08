@@ -185,6 +185,20 @@ namespace DAL
                 },
             }) > 0;
         }
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <param name="Email">邮箱</param>
+        /// <param name="Password">密码</param>
+        /// <returns></returns>
+        public Boolean UserLoad(String Email,String Password)
+        {
+            String sql = "SELECT * FROM USERS WHERE EMAIL=@EMAIL AND PASSWORD=@PASSWORD";
+            return dbo.Query(sql,new SqlParameter[] { 
+            new SqlParameter("EMAIL",Email),
+            new SqlParameter("PASSWORD",Password)
+            }).Rows.Count> 0;
+        }
 
     }
 }
